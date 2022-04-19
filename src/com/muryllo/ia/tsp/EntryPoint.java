@@ -13,7 +13,7 @@ public class EntryPoint {
   public static final int TOURNAMENT_SELECTION_SIZE = 50;
   public static final int NUMBER_OF_ROUTES = 100;
   public static final int NUMBER_OF_ELITE_ROUTES = 10;
-  public static final int NUMBER_OF_GENERATIONS = 300;
+  public static final int NUMBER_OF_GENERATIONS = 100;
 
   public static ArrayList<City> InitialPopulationOfRoutes = new ArrayList<City>(
     Arrays.asList(
@@ -75,16 +75,16 @@ public class EntryPoint {
 
   private static void showHeading(int generationNumber) {
     System.out.println("> Geracao # " + generationNumber);
-    String headingColumn1 = "Rota";
-    String remainingHeadingColumns = "Aptidao   | Distancia (em milhas)";
+    String headingColumn = "Rota";
+    String remainingHeadingColumns = " Aptidao  |  Distancia (em kms)";
     int cityNamesLength = 0;
     for (int x = 0; x < InitialPopulationOfRoutes.size(); x++)
       cityNamesLength += InitialPopulationOfRoutes.get(x).getName().length();
     int arrayLength = cityNamesLength + InitialPopulationOfRoutes.size() * 2;
-    int partialLength = (arrayLength - headingColumn1.length()) / 2;
-    for (int x = 0; x < partialLength; x++)
+    int partialLength = (arrayLength - headingColumn.length()) / 2;
+    for (int x = 0; x < partialLength-1; x++)
       System.out.print(" ");
-    System.out.print(headingColumn1);
+    System.out.print(headingColumn);
     for (int x = 0; x < partialLength; x++)
       System.out.print(" ");
     if ((arrayLength % 2) == 0)

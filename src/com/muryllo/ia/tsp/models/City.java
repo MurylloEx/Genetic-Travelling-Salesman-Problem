@@ -27,6 +27,7 @@ public class City {
   }
 
   public double distance(City city) {
+    //Fórmula Haversine (https://en.wikipedia.org/wiki/Haversine_formula)
     double deltaLongitude = city.getLongitude() - this.getLongitude();
     double deltaLatitude = city.getLatitude() - this.getLatitude();
     

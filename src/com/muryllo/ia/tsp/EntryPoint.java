@@ -7,15 +7,15 @@ import java.util.ArrayList;
 import com.muryllo.ia.tsp.models.City;
 import com.muryllo.ia.tsp.models.Population;
 import com.muryllo.ia.tsp.services.AlgorithmService;
-import com.muryllo.ia.tsp.services.LoggerService;
 
 public class EntryPoint {
 
-  public static final double MUTATION_RATE = 0.01;
+  public static final double MUTATION_RATE = 0.1;
   public static final int TOURNAMENT_SELECTION_SIZE = 3;
   public static final int NUMBER_OF_ROUTES = 100;
   public static final int NUMBER_OF_ELITE_ROUTES = 10;
   public static final int NUMBER_OF_GENERATIONS = 30;
+
   public static ArrayList<City> InitialPopulationOfRoutes = new ArrayList<City>(
     Arrays.asList(
       new City("Boston", 42.3601D, -71.0589D),
@@ -37,8 +37,7 @@ public class EntryPoint {
   );
 
   public static void main(String[] args) {
-
-    Population population = new Population(InitialPopulationOfRoutes, 100);
+    Population population = new Population(InitialPopulationOfRoutes, NUMBER_OF_ROUTES);
     population.sortRoutesByFitness();
 
     AlgorithmService geneticAlgorithm = new AlgorithmService(
@@ -51,18 +50,51 @@ public class EntryPoint {
 
     int generationNumber = 0;
 
-    LoggerService.printHeading(generationNumber++, InitialPopulationOfRoutes);
-    LoggerService.printPopulation(population);
+    showHeading(generationNumber++);
+    showPopulation(population);
 
     while (generationNumber < NUMBER_OF_GENERATIONS) {
-      LoggerService.printHeading(generationNumber++, InitialPopulationOfRoutes);
+      showHeading(generationNumber++);
       population = geneticAlgorithm.evolve(population);
       population.sortRoutesByFitness();
-      LoggerService.printPopulation(population);
+      showPopulation(population);
     }
 
     System.out.println("Melhor rota encontrada ate agora: " + population.getChromosomes().get(0));
     System.out.println("c/ uma distancia de: " + String.format("%.2f", (population.getChromosomes().get(0)).calculateTotalDistance()) + " km");
+  }
+
+  private static void showPopulation(Population population) {
+    population.getChromosomes().forEach(x -> {
+      System.out.println(
+        Arrays.toString(x.getNucleotides().toArray()) + " |  " + 
+        String.format("%.4f", x.getFitness()) + "   |  " + 
+        String.format("%.2f", x.calculateTotalDistance()));
+    });
+    System.out.println("");
+  }
+
+  private static void showHeading(int generationNumber) {
+    System.out.println("> Geracao # " + generationNumber);
+    String headingColumn1 = "Rota";
+    String remainingHeadingColumns = "Aptidao   | Distancia (em milhas)";
+    int cityNamesLength = 0;
+    for (int x = 0; x < InitialPopulationOfRoutes.size(); x++)
+      cityNamesLength += InitialPopulationOfRoutes.get(x).getName().length();
+    int arrayLength = cityNamesLength + InitialPopulationOfRoutes.size() * 2;
+    int partialLength = (arrayLength - headingColumn1.length()) / 2;
+    for (int x = 0; x < partialLength; x++)
+      System.out.print(" ");
+    System.out.print(headingColumn1);
+    for (int x = 0; x < partialLength; x++)
+      System.out.print(" ");
+    if ((arrayLength % 2) == 0)
+      System.out.print(" ");
+    System.out.println(" | " + remainingHeadingColumns);
+    cityNamesLength += remainingHeadingColumns.length() + 3;
+    for (int x = 0; x < cityNamesLength + InitialPopulationOfRoutes.size() * 2; x++)
+      System.out.print("-");
+    System.out.println("");
   }
 
 }

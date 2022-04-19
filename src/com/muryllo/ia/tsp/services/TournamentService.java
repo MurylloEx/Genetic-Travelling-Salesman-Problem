@@ -15,7 +15,7 @@ public class TournamentService {
     this.AlgorithmService = algorithmService;
   }
 
-  public <N, I extends IChromosome<N> & IAdaptable, P extends IPopulation<N, I>> P selectPopulation(P population, Class<P> typeClass) throws Exception 
+  public <N, C extends IChromosome<N> & IAdaptable, P extends IPopulation<N, C>> P selectPopulation(P population, Class<P> typeClass) throws Exception 
   {
     P tournamentPopulation;
     try {
@@ -27,7 +27,7 @@ public class TournamentService {
 
     IntStream.range(0, this.AlgorithmService.TournamentSelectionSize).forEach((x) -> {
       int randomRouteOffset = (int) (Math.random() * (double) population.getChromosomes().size());
-      I randomRoute = population.getChromosomes().get(randomRouteOffset);
+      C randomRoute = population.getChromosomes().get(randomRouteOffset);
       tournamentPopulation.getChromosomes().set(x, randomRoute);
     });
     

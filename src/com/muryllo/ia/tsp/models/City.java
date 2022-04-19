@@ -1,4 +1,3 @@
-/* Decompiler 4ms, total 356ms, lines 39 */
 package com.muryllo.ia.tsp.models;
 
 public class City {

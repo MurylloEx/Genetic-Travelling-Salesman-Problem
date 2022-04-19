@@ -1,4 +1,3 @@
-/* Decompiler 10ms, total 140ms, lines 39 */
 package com.muryllo.ia.tsp;
 
 import java.util.Arrays;
@@ -10,11 +9,11 @@ import com.muryllo.ia.tsp.services.AlgorithmService;
 
 public class EntryPoint {
 
-  public static final double MUTATION_RATE = 0.1;
-  public static final int TOURNAMENT_SELECTION_SIZE = 3;
+  public static final double MUTATION_RATE = 0.01;
+  public static final int TOURNAMENT_SELECTION_SIZE = 50;
   public static final int NUMBER_OF_ROUTES = 100;
   public static final int NUMBER_OF_ELITE_ROUTES = 10;
-  public static final int NUMBER_OF_GENERATIONS = 30;
+  public static final int NUMBER_OF_GENERATIONS = 300;
 
   public static ArrayList<City> InitialPopulationOfRoutes = new ArrayList<City>(
     Arrays.asList(

@@ -1,4 +1,3 @@
-/* Decompiler 7ms, total 131ms, lines 34 */
 package com.muryllo.ia.tsp.models;
 
 import com.muryllo.ia.tsp.interfaces.IPopulation;

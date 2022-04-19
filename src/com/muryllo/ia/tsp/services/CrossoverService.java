@@ -18,7 +18,7 @@ public class CrossoverService {
     this.TournamentService = tournamentService;
   }
 
-  private <N, I extends IChromosome<N> & IAdaptable> I fillNullsInCrossoverChromosome(I crossoverRoute, I route) {
+  private <N, C extends IChromosome<N> & IAdaptable> C fillNullsInCrossoverChromosome(C crossoverRoute, C route) {
     route.getNucleotides().stream().filter((x) -> {
       return !crossoverRoute.getNucleotides().contains(x);
     }).forEach((cityX) -> {
@@ -32,20 +32,20 @@ public class CrossoverService {
     return crossoverRoute;
   }
 
-  public <N, I extends IChromosome<N> & IAdaptable> I crossoverChromosome(
-    I chromosome1, 
-    I chromosome2,
-    Class<I> typeClass) throws Exception 
+  public <N, C extends IChromosome<N> & IAdaptable> C crossoverChromosome(
+    C chromosome1, 
+    C chromosome2,
+    Class<C> typeClass) throws Exception 
   {
-    I crossoverChromosome;
+    C crossoverChromosome;
     try {
       crossoverChromosome = typeClass.getDeclaredConstructor(AlgorithmService.getClass()).newInstance(AlgorithmService);
     } catch (Exception e) {
       throw new Exception("Couldn't crossover the Population.");
     }
 
-    I tempChromosome1 = chromosome1;
-    I tempChromosome2 = chromosome2;
+    C tempChromosome1 = chromosome1;
+    C tempChromosome2 = chromosome2;
 
     if (Math.random() < 0.5) {
       tempChromosome1 = chromosome2;

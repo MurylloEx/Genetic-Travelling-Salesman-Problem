@@ -32,11 +32,11 @@ public class Route implements IChromosome<City>, IAdaptable {
       double returnValue = 0;
 
       if (cityIndex < citiesSize - 1) {
-        returnValue = x.distance((City) this.cities.get(cityIndex + 1));
+        returnValue = x.distance(this.cities.get(cityIndex + 1));
       }
       
       return returnValue;
-    }).sum() + ((City) this.cities.get(0)).distance((City) this.cities.get(citiesSize - 1))));
+    }).sum() + this.cities.get(0).distance(this.cities.get(citiesSize - 1))));
   }
 
   public ArrayList<City> getNucleotides() {

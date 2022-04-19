@@ -13,23 +13,23 @@ public class MutationService {
     this.AlgorithmService = algorithmService;
   }
 
-  public <N, I extends IChromosome<N> & IAdaptable, P extends IPopulation<N, I>> P mutatePopulation(P population) {
+  public <N, C extends IChromosome<N> & IAdaptable, P extends IPopulation<N, C>> P mutatePopulation(P population) {
     population.getChromosomes().stream().filter((x) -> {
-      return population.getChromosomes().indexOf(x) >= AlgorithmService.NumberOfEliteRoutes;
+      return population.getChromosomes().indexOf(x) >= this.AlgorithmService.NumberOfEliteRoutes;
     }).forEach((x) -> {
       mutateChromosome(x);
     });
     return population;
   }
 
-  public <N, I extends IChromosome<N> & IAdaptable> I mutateChromosome(I route) {
+  public <N, C extends IChromosome<N> & IAdaptable> C mutateChromosome(C route) {
     route.getNucleotides().stream().filter((x) -> {
-      return Math.random() < AlgorithmService.MutationRate;
-    }).forEach((cityX) -> {
+      return (Math.random() >= 0.5D) || (Math.random() <= this.AlgorithmService.MutationRate);
+    }).forEach((nucleotideX) -> {
       int y = (int) ((double) route.getNucleotides().size() * Math.random());
-      N cityY = route.getNucleotides().get(y);
-      route.getNucleotides().set(route.getNucleotides().indexOf(cityX), cityY);
-      route.getNucleotides().set(y, cityX);
+      N nucleotideY = route.getNucleotides().get(y);
+      route.getNucleotides().set(route.getNucleotides().indexOf(nucleotideX), nucleotideY);
+      route.getNucleotides().set(y, nucleotideX);
     });
     return route;
   }

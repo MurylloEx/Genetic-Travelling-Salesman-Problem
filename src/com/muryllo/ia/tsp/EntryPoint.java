@@ -13,7 +13,7 @@ public class EntryPoint {
   public static final int TOURNAMENT_SELECTION_SIZE = 50;
   public static final int NUMBER_OF_ROUTES = 100;
   public static final int NUMBER_OF_ELITE_ROUTES = 10;
-  public static final int NUMBER_OF_GENERATIONS = 100;
+  public static final int NUMBER_OF_GENERATIONS = 10;
 
   public static ArrayList<City> InitialPopulationOfRoutes = new ArrayList<City>(
     Arrays.asList(

@@ -78,21 +78,31 @@ public class EntryPoint {
     String headingColumn = "Rota";
     String remainingHeadingColumns = " Aptidao  |  Distancia (em kms)";
     int cityNamesLength = 0;
+
     for (int x = 0; x < InitialPopulationOfRoutes.size(); x++)
       cityNamesLength += InitialPopulationOfRoutes.get(x).getName().length();
+
     int arrayLength = cityNamesLength + InitialPopulationOfRoutes.size() * 2;
     int partialLength = (arrayLength - headingColumn.length()) / 2;
+
     for (int x = 0; x < partialLength-1; x++)
       System.out.print(" ");
+    
     System.out.print(headingColumn);
+
     for (int x = 0; x < partialLength; x++)
       System.out.print(" ");
+
     if ((arrayLength % 2) == 0)
       System.out.print(" ");
+
     System.out.println(" | " + remainingHeadingColumns);
+
     cityNamesLength += remainingHeadingColumns.length() + 3;
+
     for (int x = 0; x < cityNamesLength + InitialPopulationOfRoutes.size() * 2; x++)
       System.out.print("-");
+
     System.out.println("");
   }
 

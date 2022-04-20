@@ -1,4 +1,3 @@
-/* Decompiler 4ms, total 132ms, lines 35 */
 package com.muryllo.ia.tsp.services;
 
 import com.muryllo.ia.tsp.interfaces.IAdaptable;

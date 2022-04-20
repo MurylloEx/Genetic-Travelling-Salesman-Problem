@@ -1,4 +1,3 @@
-/* Decompiler 61ms, total 186ms, lines 78 */
 package com.muryllo.ia.tsp.services;
 
 import java.util.ArrayList;
@@ -59,10 +58,10 @@ public class CrossoverService {
     return this.fillNullsInCrossoverChromosome(crossoverChromosome, tempChromosome2);
   }
 
-  public <N, I extends IChromosome<N> & IAdaptable, P extends IPopulation<N, I>> P crossoverPopulation(
+  public <N, C extends IChromosome<N> & IAdaptable, P extends IPopulation<N, C>> P crossoverPopulation(
     P population,
     Class<P> classPopulation, 
-    Class<I> classChromosome) throws Exception 
+    Class<C> classChromosome) throws Exception 
   {
     P crossoverPopulation;
     try {
@@ -78,8 +77,8 @@ public class CrossoverService {
 
     IntStream.range(this.AlgorithmService.NumberOfEliteRoutes, crossoverPopulation.getChromosomes().size()).forEach((x) -> {
       try {
-        I chromosome1 = this.TournamentService.selectPopulation(population, classPopulation).getChromosomes().get(0);
-        I chromosome2 = this.TournamentService.selectPopulation(population, classPopulation).getChromosomes().get(0);
+        C chromosome1 = this.TournamentService.selectPopulation(population, classPopulation).getChromosomes().get(0);
+        C chromosome2 = this.TournamentService.selectPopulation(population, classPopulation).getChromosomes().get(0);
         crossoverPopulation.getChromosomes().set(x, this.crossoverChromosome(chromosome1, chromosome2, classChromosome));
       } catch (Exception e) {}
     });

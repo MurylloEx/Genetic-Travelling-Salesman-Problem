@@ -1,10 +1,10 @@
-/* Decompiler 9ms, total 135ms, lines 55 */
 package com.muryllo.ia.tsp.services;
+
+import java.util.Arrays;
+import java.util.ArrayList;
 
 import com.muryllo.ia.tsp.models.City;
 import com.muryllo.ia.tsp.models.Population;
-import java.util.ArrayList;
-import java.util.Arrays;
 
 public class LoggerService {
 

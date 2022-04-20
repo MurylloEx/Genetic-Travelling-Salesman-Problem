@@ -1,11 +1,11 @@
-/* Decompiler 6ms, total 131ms, lines 33 */
 package com.muryllo.ia.tsp.services;
+
+import java.util.ArrayList;
+import java.util.stream.IntStream;
 
 import com.muryllo.ia.tsp.interfaces.IAdaptable;
 import com.muryllo.ia.tsp.interfaces.IChromosome;
 import com.muryllo.ia.tsp.interfaces.IPopulation;
-import java.util.ArrayList;
-import java.util.stream.IntStream;
 
 public class TournamentService {
 
@@ -21,7 +21,7 @@ public class TournamentService {
     try {
       tournamentPopulation = typeClass.getDeclaredConstructor(ArrayList.class, Integer.TYPE)
         .newInstance(this.AlgorithmService.InitialRoute, this.AlgorithmService.TournamentSelectionSize);
-    } catch (Exception var5) {
+    } catch (Exception e) {
       throw new Exception("Couldn't select the specified Population.");
     }
 

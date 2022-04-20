@@ -1,12 +1,12 @@
-/* Decompiler 8ms, total 134ms, lines 57 */
 package com.muryllo.ia.tsp.models;
+
+import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.Collections;
 
 import com.muryllo.ia.tsp.interfaces.IAdaptable;
 import com.muryllo.ia.tsp.interfaces.IChromosome;
 import com.muryllo.ia.tsp.services.AlgorithmService;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 
 public class Route implements IChromosome<City>, IAdaptable {
 

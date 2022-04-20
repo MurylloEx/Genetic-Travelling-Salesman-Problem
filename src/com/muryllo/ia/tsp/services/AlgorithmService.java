@@ -1,4 +1,3 @@
-/* Decompiler 6ms, total 131ms, lines 43 */
 package com.muryllo.ia.tsp.services;
 
 import java.util.ArrayList;
@@ -9,11 +8,11 @@ import com.muryllo.ia.tsp.models.Population;
 
 public class AlgorithmService {
 
-  protected double MutationRate = 0.25D;
-  protected int NumberOfRoutes = 100;
-  protected int NumberOfEliteRoutes = 1;
-  protected int NumberOfGenerations = 30;
-  protected int TournamentSelectionSize = 3;
+  protected double MutationRate;
+  protected int NumberOfRoutes;
+  protected int NumberOfEliteRoutes;
+  protected int NumberOfGenerations;
+  protected int TournamentSelectionSize;
   
   protected ArrayList<City> InitialRoute;
   protected TournamentService TournamentService;

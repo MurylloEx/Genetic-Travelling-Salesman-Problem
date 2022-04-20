@@ -1,9 +1,9 @@
 package com.muryllo.ia.tsp.models;
 
-import com.muryllo.ia.tsp.interfaces.IPopulation;
-
 import java.util.ArrayList;
 import java.util.stream.IntStream;
+
+import com.muryllo.ia.tsp.interfaces.IPopulation;
 
 public class Population implements IPopulation<City, Route> {
   

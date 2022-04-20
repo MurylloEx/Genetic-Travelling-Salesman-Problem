@@ -1,4 +1,3 @@
-/* Decompiler 1ms, total 131ms, lines 10 */
 package com.muryllo.ia.tsp.interfaces;
 
 import java.util.ArrayList;
